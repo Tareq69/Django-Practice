@@ -1,0 +1,8 @@
+
+Python virtualenv creation -> py -m venv project-name
+Python virtualenv activation -> Scripts\activate.bat
+Djnago install -> py -m pip install Django
+Django project creation-> django-admin startproject projectname
+Django app creation-> python manage.py startapp appname
+
+Views -> View is the web view that is shown when we enter a url in our browser search engine. In django when we request for a url , it first opens urls.py and then returns a corresponding views.py. Use different Urls.py for different apps. Connect these urls.py with Urls.py of main project files urls.py
