@@ -5,4 +5,21 @@ Djnago install -> py -m pip install Django
 Django project creation-> django-admin startproject projectname
 Django app creation-> python manage.py startapp appname
 
+-------------------------------- Views, URLs and Templates--------------------------------------------
+
 Views -> View is the web view that is shown when we enter a url in our browser search engine. In django when we request for a url , it first opens urls.py and then returns a corresponding views.py. Use different Urls.py for different apps. Connect these urls.py with Urls.py of main project files urls.py
+
+templates-> Templates folder will hold the html files for every app. Join templates folder in settings.py using 
+  TEMPLATES_DIR = os.path.join(BASE_DIR,'templates'), Also include this directory in templates dictionary of settings.py, 'DIRS': [TEMPLATES_DIR,],
+
+Static files-> css,image,song,video,javascript codes etc. Static file holds these. 
+	STATIC_DIR = os.path.join(BASE_DIR,'static'), STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
+{% load static %} in the top of html file. Also use {"%static "images/abc.jpg"  %"} to load any static files from the static folder.
+
+
+--------------------------------     Models  --------------------------------------------
+
+

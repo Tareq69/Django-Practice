@@ -3,6 +3,5 @@ from django.urls import path
 from django.conf.urls import include
 from home import views
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('home/',include('home.urls')),
+    path('',include('home.urls')), # Mapping the urls of home app's url.py
 ]

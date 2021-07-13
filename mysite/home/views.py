@@ -4,10 +4,12 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("<h1>I am from first app</h1> <a href='/home/about/'>About us</a>")
+    dic={}
+    return render(request, 'home/index.html',context= dic)  # Returning the index.html page from home folder of templates folder
 
 def contact(request):
-    return HttpResponse("<h1>Contact us</h1> <a href='/home/index/'>Home</a>")
-
-def About_us(request):
-    return HttpResponse("<h1>About us</h1> <a href='/home/contact'>Contact us </a> ")
+    dic={}
+    return render(request, 'home/contact.html',context= dic ) # Returning the contact.html page from home folder of templates folder
+#
+# def About_us(request):
+#     return HttpResponse("<h1>About us</h1> <a href='/home/contact'>Contact us </a> ")
