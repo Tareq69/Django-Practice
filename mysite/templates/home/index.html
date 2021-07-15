@@ -1,19 +1,32 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="en" dir="ltr">
   <head>
-    <link rel="stylesheet" href="{%static "css/mystyle.css" %}">
+    <link rel="stylesheet" href="{% static "css/style1.css" %}">
     <meta charset="utf-8">
-    <title>Homepage of Homeapp</title>
+    <title>Musician list</title>
   </head>
   <body>
-      <h1>Header of homepage</h1>
-       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci dolore corporis molestiae suscipit illo quae provident, aliquid omnis laboriosam corrupti numquam consequuntur voluptatibus? Dolores nostrum fugit ratione, perferendis nesciunt atque. Accusantium quod reiciendis autem perferendis? Quas officiis minus nihil nam earum explicabo, quod animi, reiciendis alias vitae atque adipisci praesentium.</p>
+      <h1>Musicians</h1>
 
+      <p>{{T1}}</p>
+      <table border="2" color="green">
+      <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>instrument</th>
+      </tr>
 
-      <h3>Go to contact Page <a href="/contact">Contact</a></h3>
+      {% for rows in m %}
 
-      <img src="{% static "images/abc.jpg" %}" alt="">
+      <tr>
+        <td>{{rows.first_name}}</td>
+        <td>{{rows.last_name}}</td>
+        <td>{{rows.instrument}}</td>
+      </tr>
 
+      {% endfor %}
+
+</table>
   </body>
 </html>

@@ -22,4 +22,21 @@ STATICFILES_DIRS = [
 
 --------------------------------     Models  --------------------------------------------
 
+We need databases to store information. Django gives us default database sqlite.
 
+We need django models to work with databases in django. Sqlite is usd for normal/ small projcts. For Big projcts we need databases like sqlite/mongodb.
+Every django app has a models.py folder. Migration is needed to create and update the database. 
+shell command -> Py manage.py shell 
+import model-> from appname.models import modelname. function to print database values-> def __str__(self):
+
+
+--------------------------------------------------- Migration commands----------------------------------------
+1) py manage.py migrate
+2) py manage.py makemigrations appname
+3)py manage.py migrate
+
+
+
+------------------------------------- Django admin panel ----------------------------------------------------
+
+Admin panel is given by django for us to insert data and do other things easily. First import the models in admin.py. Then register them. Finally, create a superuser to access the admin site using py manage.py createsuperuser command.

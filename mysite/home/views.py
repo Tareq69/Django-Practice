@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from home.models import Musician, Album
 # Create your views here.
 
 
 def index(request):
-    dic={}
+    mlist = Musician.objects.order_by('first_name')
+    dic={'T1':'List of musicians', 'm': mlist}
     return render(request, 'home/index.html',context= dic)  # Returning the index.html page from home folder of templates folder
 
 def contact(request):
