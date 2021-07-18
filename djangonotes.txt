@@ -34,6 +34,88 @@ import model-> from appname.models import modelname. function to print database 
 1) py manage.py migrate
 2) py manage.py makemigrations appname
 3)py manage.py migrate
+---------------------------------------- Django Forms-----------------------------------------------
+
+ We can create forms using Djangos library. They are similar to html forms.
+
+A sample form -> from django import forms
+
+class user_form(forms.Form):
+
+    # label for ="User_name"
+    # input type="text" name="user_name">
+    user_name = forms.CharField()
+
+    # label for ="User_name"
+    # input type="email" name="user_name">
+    user_email =  forms.EmailField()
+
+with parameters -> user_name = forms.CharField(label="Your name", max_length = 20, widget= forms.TextInput(attrs ={'placeholder':"Enter your fullname"}))
+
+Form Submission ->  if request.method =='POST':
+        new_form = forms.user_form(request.POST)
+
+
+    if new_form.is_valid():
+        user_name = new_form.cleaned_data['user_name']
+        dob = new_form.cleaned_data['dob']
+        user_email = new_form.cleaned_data['user_email']
+
+        dic.update({'user_name': user_name})
+        dic.update({'dob': dob})
+        dic.update({'user_email': user_email})
+        dic.update({'form_submitted':'Yes'})
+
+
+Validators.
+
+Django Model Forms->	
+forms.py				
+from django import forms
+from django.core import validators
+from home.models import Musician,Album
+
+class Musician_form(forms.ModelForm): # creating forms using model objects
+    class Meta:
+        model = Musician #model name
+        fields = "__all__" #selected fields
+
+Views.py
+def form(request):
+    new_form = forms.Musician_form()
+
+    if request.method == "POST":
+        new_form = forms.Musician_form(request.POST)
+
+    if new_form.is_valid():
+        new_form.save(commit=True)
+        return index(request)
+    dic = {'tform': new_form}
+
+    return render(request, 'home/form.html', context = dic)
+
+
+
+--------------------------------------------------- Relative URLS-------------------------------------------------------------------------------------------------
+
+Hardcoded URL is not preferred to use. Example: <a href="/form">Form</a>
+So, we will use relative urls. 
+In urls.py -> app_name = "home"
+in anchor tag define a relative url using "{% url 'appname:name used in urls.py' %}". Example-> <a href="{% url 'home:form' %}">Add new Musicians</a>
+
+
+----------------------------------- Template Inheritence -----------------------------------------------------------------------------------------------------------
+Inherit a base.html file that we want to view in the all the page of the website. For that create a base.html file and then :
+{% extends "home/base.html" %} use this on the pages where we want to use this base.html codes. Then write the own unique styles of that specific page in the block 
+
+{% block body_block %}
+
+{% endblock %}
+
+
+
+
+
 
 
 
