@@ -1,0 +1,13 @@
+{% extends 'first_app/base.html' %}
+{% block body_block %}
+
+<h3>Update Fighters</h3>
+<form  method="POST">
+
+{{form.as_p}}
+{% csrf_token  %}
+
+<input type="Submit" name="Submit" value="Add" class="btn btn-primary btn-sm">
+</form>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'first_app/base.html' %}
+{% block body_block %}
+
+<h3>Fighter Detail</h3>
+
+<p>{{fighter.first_name}} {{fighter.last_name}}</p>
+<p>{{fighter.style}}</p>
+<h3>Achievements</h3>
+{% for ach in fighter.fighter_list.all %}
+<ul>
+  <li>{{ach.name}}</li>
+</ul>
+{% endfor %}
+<a href="{% url 'first_app:update_fighters' pk=fighter.pk %}" class="btn btn-warning btn-sm">Update</a>
+<br>
+<a href="{% url 'first_app:delete_fighter' pk=fighter.pk %}" class="btn btn-danger btn-sm">Delete</a>
+{% endblock %}

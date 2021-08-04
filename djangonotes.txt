@@ -143,7 +143,39 @@ register.filter('custom_filter', my_filter)
 
 ------------------------------------------ User Authentication -------------------------------------------------------
 
-Django already has given us some tools to add user and validate them. GO to django admin panel and their we can see the user table where list of users will show up.	
+Django already has given us some tools to add user and validate them. GO to django admin panel and their we can see the user table where list of users will show up.
+
+
+------------------------------------ Class Based View----------------------------------------------------
+
+Example of viewing with class instead of function view -> 
+
+			----------------------TemplateView---------------------
+class indexView(TemplateView):
+    template_name = 'first_app/index1.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['s1'] = 'sameple text 1'
+        context['s2'] = 'sample text 2'
+        return context
+
+        return context
+
+				--------------------ListView-------------------------
+class indexView2(ListView):
+    context_object_name = 'Fighter_list'
+    model = models.Fighter
+    template_name = 'first_app/index1.html'
+
+
+
+
+
+
+
+
+	
 
 
 

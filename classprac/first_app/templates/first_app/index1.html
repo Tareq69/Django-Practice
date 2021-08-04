@@ -1,0 +1,8 @@
+{% extends 'first_app/base.html' %}
+{% block body_block %}
+<ul>
+{% for fighter in Fighter_list %}
+<li><a href="{% url 'first_app:fighter_details' pk=fighter.pk %}">{{fighter.first_name}} {{fighter.last_name}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
