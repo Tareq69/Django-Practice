@@ -16,7 +16,7 @@ class Album(models.Model):
     # id = models.AutoField(primary_key = True) automatically created by django
     artist = models.ForeignKey(Musician, on_delete= models.CASCADE)
     name  = models.CharField(max_length = 30)
-    release_date = models.DateField()
+    # release_date = models.DateField(blank=True)
 
     rtp = (
     (1,'waste of time'),
@@ -30,6 +30,4 @@ class Album(models.Model):
 
     def __str__(self):
         # return self.artist
-        return self.name
-        return self.release_date
-        return self.instrument
+        return self.name + " ,Rating " + str(self.rating)

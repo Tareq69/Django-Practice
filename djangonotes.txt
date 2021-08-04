@@ -9,6 +9,10 @@ Django app creation-> python manage.py startapp appname
 
 Views -> View is the web view that is shown when we enter a url in our browser search engine. In django when we request for a url , it first opens urls.py and then returns a corresponding views.py. Use different Urls.py for different apps. Connect these urls.py with Urls.py of main project files urls.py
 
+urls.py for an app -> from django.conf.urls import  url
+from django.urls import paths
+from appname import views
+
 templates-> Templates folder will hold the html files for every app. Join templates folder in settings.py using 
   TEMPLATES_DIR = os.path.join(BASE_DIR,'templates'), Also include this directory in templates dictionary of settings.py, 'DIRS': [TEMPLATES_DIR,],
 
@@ -34,6 +38,11 @@ import model-> from appname.models import modelname. function to print database 
 1) py manage.py migrate
 2) py manage.py makemigrations appname
 3)py manage.py migrate
+
+------------------------------------- Django admin panel ----------------------------------------------------
+
+Admin panel is given by django for us to insert data and do other things easily. First import the models in admin.py. Then register them. Finally, create a superuser to access the admin site using py manage.py createsuperuser command.
+
 ---------------------------------------- Django Forms-----------------------------------------------
 
  We can create forms using Djangos library. They are similar to html forms.
@@ -96,7 +105,7 @@ def form(request):
 
 
 
---------------------------------------------------- Relative URLS-------------------------------------------------------------------------------------------------
+--------------------------------------------------- Relative URLS ----------------------------------------------
 
 Hardcoded URL is not preferred to use. Example: <a href="/form">Form</a>
 So, we will use relative urls. 
@@ -104,7 +113,7 @@ In urls.py -> app_name = "home"
 in anchor tag define a relative url using "{% url 'appname:name used in urls.py' %}". Example-> <a href="{% url 'home:form' %}">Add new Musicians</a>
 
 
------------------------------------ Template Inheritence -----------------------------------------------------------------------------------------------------------
+----------------------------------- Template Inheritence and Filters--------------------------------------------
 Inherit a base.html file that we want to view in the all the page of the website. For that create a base.html file and then :
 {% extends "home/base.html" %} use this on the pages where we want to use this base.html codes. Then write the own unique styles of that specific page in the block 
 
@@ -112,13 +121,30 @@ Inherit a base.html file that we want to view in the all the page of the website
 
 {% endblock %}
 
+Template filters -> Template filters can be used to filter data as we want. Example: {{data|upper}} will return the data in uppercase. Django has some built in filters.
+
+Custom template filters-> If a required filter is not available built in in Django, We can build our own custom filters. First create templatetags folder in project folder. Then crate 2 python file. 1 is __init__.py and other is the custom filter python file. Then create a customer filter like this..
+
+from django import template
+
+register = template.Library()
+
+def my_filter(value):
+    return value + 100
+
+register.filter('custom_filter', my_filter)
+
+
+--------------------------------------------- CRUD Using Mysql -------------------------------------------
 
 
 
 
 
+------------------------------------------ User Authentication -------------------------------------------------------
+
+Django already has given us some tools to add user and validate them. GO to django admin panel and their we can see the user table where list of users will show up.	
 
 
-------------------------------------- Django admin panel ----------------------------------------------------
 
-Admin panel is given by django for us to insert data and do other things easily. First import the models in admin.py. Then register them. Finally, create a superuser to access the admin site using py manage.py createsuperuser command.
+
